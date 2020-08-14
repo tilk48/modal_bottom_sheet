@@ -32,9 +32,14 @@ class _CupertinoBottomSheetContainer extends StatelessWidget {
   final Widget child;
   final Color backgroundColor;
   final Radius topRadius;
+  final double containerWidth;
 
   const _CupertinoBottomSheetContainer(
-      {Key key, this.child, this.backgroundColor, @required this.topRadius})
+      {Key key,
+      this.child,
+      this.backgroundColor,
+      @required this.topRadius,
+      this.containerWidth})
       : super(key: key);
 
   @override
@@ -53,7 +58,7 @@ class _CupertinoBottomSheetContainer extends StatelessWidget {
         child: Container(
           decoration:
               BoxDecoration(color: _backgroundColor, boxShadow: [shadow]),
-          width: double.infinity,
+          width: containerWidth,
           child: MediaQuery.removePadding(
             context: context,
             removeTop: true, //Remove top Safe Area
@@ -65,27 +70,27 @@ class _CupertinoBottomSheetContainer extends StatelessWidget {
   }
 }
 
-Future<T> showCupertinoModalBottomSheet<T>({
-  @required BuildContext context,
-  @required ScrollWidgetBuilder builder,
-  Color backgroundColor,
-  double elevation,
-  ShapeBorder shape,
-  Clip clipBehavior,
-  Color barrierColor,
-  bool expand = false,
-  AnimationController secondAnimation,
-  Curve animationCurve,
-  Curve previousRouteAnimationCurve,
-  bool useRootNavigator = false,
-  bool bounce = true,
-  bool isDismissible,
-  bool enableDrag = true,
-  Radius topRadius = _default_top_radius,
-  Duration duration,
-  RouteSettings settings,
-  Color transitionBackgroundColor,
-}) async {
+Future<T> showCupertinoModalBottomSheet<T>(
+    {@required BuildContext context,
+    @required ScrollWidgetBuilder builder,
+    Color backgroundColor,
+    double elevation,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    Color barrierColor,
+    bool expand = false,
+    AnimationController secondAnimation,
+    Curve animationCurve,
+    Curve previousRouteAnimationCurve,
+    bool useRootNavigator = false,
+    bool bounce = true,
+    bool isDismissible,
+    bool enableDrag = true,
+    Radius topRadius = _default_top_radius,
+    Duration duration,
+    RouteSettings settings,
+    Color transitionBackgroundColor,
+    double containerWidth = double.infinity}) async {
   assert(context != null);
   assert(builder != null);
   assert(expand != null);
